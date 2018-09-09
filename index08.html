@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+<div id="app">
+    <h2>
+        <a href="http://google.com" target=_blank v-on:click="clickOnGoogle">google</a>
+    </h2>
+
+    <h2>
+        <a href="http://google.com" target=_blank v-on:click.prevent="">google</a>
+    </h2>
+
+    <h2 v-on:mousemove="handleMouseMove">
+        X: {{ x}} / Y: {{ y }}
+        <span v-on:mousemove.stop="">
+            не изменять
+        </span>
+    </h2>
+
+    <hr>
+
+    <input type="text" v-on:keyup="alertValue1">
+    <input type="text" v-on:keyup.enter="alertValue2">
+    <input type="text" v-on:keyup.enter.space="alertValue2">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            x: 0,
+            y: 0
+        },
+        methods: {
+            clickOnGoogle: function (event) {
+                event.preventDefault()
+            },
+            handleMouseMove: function (event) {
+                this.x = event.clientX
+                this.y = event.clientY
+            },
+            alertValue1: function (event) {
+                if (event.keyCode == 13) {
+                    alert(event.target.value)
+                }
+            },
+            alertValue2: function (event) {
+                alert(event.target.value)
+            }
+        }
+    })
+</script>
+</body>
+</html>
