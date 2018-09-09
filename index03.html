@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Vue JS</title>
 </head>
 <body>
 <div id="app">
-    <h1>Hello Vue</h1>
+    <h2>
+        <a v-bind:href="url">{{ url }}</a>
+    </h2>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 <script>
     new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            url: 'http://google.com'
+        }
     })
 </script>
 </body>
